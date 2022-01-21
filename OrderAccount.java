@@ -155,9 +155,45 @@ public class OrderAccount {
                                         If you want to exit, type 0
                         ------------------------------------------------------------""");
                 System.out.println("Here is the list of all Hawker stalls");
-                System.out.println("Choose a name of the Hawker stall that you would like to order from: ");
                 System.out.println("------------------------------------------------------------");
                 HawkerFoodStall.ShowAllHawkerStalls();
+                System.out.println("Our system can also sort stalls by 4 types of food(salty, bitter, spicy, sweet)");
+                System.out.println("If you want to sort them type 'sort': ");
+                String sortAnswer = input.nextLine();
+                if (sortAnswer.toLowerCase().equals("sort")) {
+                    System.out.println("By which type do you want to sort? (salty, bitter, spicy, sweet)");
+                    String sorting = input.nextLine();
+                    // Просто сделать сортАнсер = преференсу, спросить у юзера про преферс при создании аккаунта
+                    // и спроить хочет ли он отсортировать по его преференсу, если да, то ок.
+                    switch (sorting) {
+                        case "salty":
+                            for (int i = 0; i < HawkerFoodStall.StallsList.size(); i++) {
+                                if (HawkerFoodStall.StallsList.get(i).getFoodPreferences().equals("salty")){
+                                    System.out.println(HawkerFoodStall.StallsList.get(i));
+                                }
+                            }
+                            break;
+                        case "bitter":
+                            for (int i = 0; i < HawkerFoodStall.StallsList.size(); i++) {
+                                if (HawkerFoodStall.StallsList.get(i).getFoodPreferences().equals("bitter")){
+                                    System.out.println(HawkerFoodStall.StallsList.get(i));
+                                }
+                            }
+                        case "spicy":
+                            for (int i = 0; i < HawkerFoodStall.StallsList.size(); i++) {
+                                if (HawkerFoodStall.StallsList.get(i).getFoodPreferences().equals("spicy")){
+                                    System.out.println(HawkerFoodStall.StallsList.get(i));
+                                }
+                            }
+                        case "sweet":
+                            for (int i = 0; i < HawkerFoodStall.StallsList.size(); i++) {
+                                if (HawkerFoodStall.StallsList.get(i).getFoodPreferences().equals("sweet")){
+                                    System.out.println(HawkerFoodStall.StallsList.get(i));
+                                }
+                            }
+                    }
+                }
+                System.out.println("Choose a name of the Hawker stall that you would like to order from: ");
                 String chosenStall = input.nextLine();
                 if (chosenStall.equals("0")) {
                     break;

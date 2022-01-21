@@ -15,18 +15,21 @@ public class Main {
         ArrayList<StallFoodMenu> listExample1 = new ArrayList<>();
         listExample1.add(menuExample1);
         example1.setStallFoodMenuList(listExample1);
+        example1.setFoodPreferences("salty");
 
         HawkerFoodStall example2 = new HawkerFoodStall("VegetarianStall", "best place for vegetarians", "Max", "Orchard", 77);
         StallFoodMenu menuExample2 = new StallFoodMenu("Delicious veggies", 50, 7);
         ArrayList<StallFoodMenu> listExample2 = new ArrayList<>();
         listExample2.add(menuExample2);
         example2.setStallFoodMenuList(listExample2);
+        example2.setFoodPreferences("sweet");
 
         HawkerFoodStall example3 = new HawkerFoodStall("Fishy Fishy", "very fishy", "John", "Beauty World Plaza", 45);
         StallFoodMenu menuExample3 = new StallFoodMenu("Golden fish", 75, 20);
         ArrayList<StallFoodMenu> listExample3 = new ArrayList<>();
         listExample3.add(menuExample3);
         example3.setStallFoodMenuList(listExample3);
+        example3.setFoodPreferences("salty");
 
         HawkerFoodStall.StallsList.add(example1);
         HawkerFoodStall.StallsList.add(example2);

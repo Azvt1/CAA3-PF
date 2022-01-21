@@ -15,7 +15,6 @@ public class HawkerFoodStall {
 
     // Arraylist for containing new Stalls
     static List<HawkerFoodStall> StallsList = new ArrayList<HawkerFoodStall>();
-    static String[] FoodPreferences = new String[]{"spicy, salty, bitter, sweet"};
 
 
 
@@ -28,7 +27,10 @@ public class HawkerFoodStall {
         this.address = address;
         this.postal = postal;
     }
+    //public enum FoodPreference { spicy, salty, bitter, sweet };
+    //public FoodPreference preference = FoodPreference.bitter;
 
+    static String[] FoodPreferences = new String[]{"spicy", "salty", "bitter", "sweet"};
 
     @Override
     public String toString() {
@@ -72,9 +74,12 @@ public class HawkerFoodStall {
     public int getPostal() {
         return postal;
     }
+
+    // Set & get methods for foodPreferences
     public void setFoodPreferences(String preference) {
         this.preference = preference;
     }
+    public String getFoodPreferences() {return preference;}
 
     // Get method for Hawker list
     public void setStallFoodMenuList(ArrayList<StallFoodMenu> stallFoodMenuList) {
@@ -90,6 +95,7 @@ public class HawkerFoodStall {
         Scanner foodName = new Scanner(System.in);
         Scanner calories = new Scanner(System.in);
         Scanner price = new Scanner(System.in);
+        Scanner preference = new Scanner(System.in);
 
 
         System.out.println("Here we go! Hawker should have 'name', 'description', 'ownerName', 'address', 'postal' and Menu list");
@@ -114,8 +120,21 @@ public class HawkerFoodStall {
         h1.setPostal(givenPostal);
 
         System.out.println("Now, can you please enter type that match your Hawker Stall. If you don't want, type something" +
-                "else");
-        System.out.println(FoodPreferences.toString());
+                " else");
+        for (int i = 0; i < FoodPreferences.length; i++) {
+            System.out.println(FoodPreferences[i]);
+        }
+        String givenPreference = preference.nextLine();
+        for (int i = 0; i < FoodPreferences.length; i++) {
+            if (FoodPreferences[i].equals(givenPreference.toLowerCase())) {
+                h1.setFoodPreferences(givenPreference);
+                System.out.println("Thank you very much!");
+                break;
+            } else {
+                System.out.println("=(");
+                break;
+            }
+        }
         System.out.println("""
                 Now, write your menu, each meal should contain 'food name', 'calories', 'price'.
                                        -----IMPORTANT-----
