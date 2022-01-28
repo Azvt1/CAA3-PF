@@ -158,7 +158,7 @@ public class OrderAccount {
                 System.out.println("------------------------------------------------------------");
                 HawkerFoodStall.ShowAllHawkerStalls();
                 System.out.println("Our system can also sort stalls by 4 types of food(salty, bitter, spicy, sweet)");
-                System.out.println("If you want to sort them type 'sort': ");
+                System.out.print("If you want to sort them type 'sort': ");
                 String sortAnswer = input.nextLine();
                 if (sortAnswer.toLowerCase().equals("sort")) {
                     System.out.println("By which type do you want to sort? (salty, bitter, spicy, sweet)");
