@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -93,8 +94,6 @@ public class HawkerFoodStall {
         HawkerFoodStall h1 = new HawkerFoodStall("", "", "", "", 0);
         Scanner newHawker = new Scanner(System.in);
         Scanner foodName = new Scanner(System.in);
-        Scanner calories = new Scanner(System.in);
-        Scanner price = new Scanner(System.in);
         Scanner preference = new Scanner(System.in);
 
 
@@ -115,8 +114,19 @@ public class HawkerFoodStall {
         String givenAddress = newHawker.nextLine();
         h1.setAddress(givenAddress);
 
+        boolean keepGoing = true;
+        int givenPostal = 0;
         System.out.print("Now enter the postal: ");
-        int givenPostal = newHawker.nextInt();
+        while (keepGoing) {
+            try {
+                Scanner postalInput = new Scanner(System.in);
+                givenPostal = postalInput.nextInt();
+                keepGoing = false;
+            } catch (InputMismatchException e) {
+                System.out.println("Sorry, but the postal should be a number.");
+                System.out.print("Enter a postal: ");
+            }
+        }
         h1.setPostal(givenPostal);
 
         System.out.println("Now, can you please enter type that match your Hawker Stall. If you don't want, type something" +
@@ -142,6 +152,7 @@ public class HawkerFoodStall {
                 """);
         while (true) {
             StallFoodMenu s1 = new StallFoodMenu("", 0, 0);
+            System.out.println("------------------------------------------");
             System.out.print("Enter food name: ");
             String givenFoodName = foodName.nextLine();
             if (givenFoodName.equals("stop")) {
@@ -150,13 +161,31 @@ public class HawkerFoodStall {
             else {
                 s1.setFoodName(givenFoodName);
 
-                System.out.print("Enter calories of the food: ");
-                double givenCalories = calories.nextDouble();
-                s1.setCalories(givenCalories);
+                keepGoing = true;
+                while (keepGoing) {
+                    try {
+                        Scanner calories = new Scanner(System.in);
+                        System.out.print("Enter calories of the food: ");
+                        double givenCalories = calories.nextDouble();
+                        s1.setCalories(givenCalories);
+                        keepGoing = false;
+                    } catch (InputMismatchException e) {
+                        System.out.println("Sorry, but calories should be a number");
+                    }
+                }
 
-                System.out.print("Enter price: ");
-                double givenPrice = price.nextDouble();
-                s1.setPrice(givenPrice);
+                keepGoing = true;
+                while (keepGoing) {
+                    try {
+                        Scanner price = new Scanner(System.in);
+                        System.out.print("Enter price of the food: ");
+                        double givenPrice = price.nextDouble();
+                        s1.setPrice(givenPrice);
+                        keepGoing = false;
+                    } catch (InputMismatchException e) {
+                        System.out.println("Sorry, but the price should be a number");
+                    }
+                }
 
                 h1.stallFoodMenuList.add(s1);
                 // DO A SET method FOR THE MENU

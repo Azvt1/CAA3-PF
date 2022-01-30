@@ -152,7 +152,7 @@ public class OrderAccount {
                 Scanner input = new Scanner(System.in);
                 System.out.println("""
                                         ** DO NOTE **
-                                        If you want to exit, type 0
+                                 If you want to exit, type 0
                         ------------------------------------------------------------""");
                 System.out.println("Here is the list of all Hawker stalls");
                 System.out.println("------------------------------------------------------------");

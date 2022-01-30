@@ -1,9 +1,6 @@
 package com.company;
 
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
 
 public class Main {
@@ -44,7 +41,8 @@ public class Main {
         int choice = 1;
         boolean userHasAccount = false;
 
-        while (choice != 0) {
+        while (true) {
+            boolean keepGoing = true;
             System.out.println("""
                     Choose your option!
                     0 - Finish program.
@@ -52,8 +50,17 @@ public class Main {
                     2 - Managing Hawker Stalls
                     3 - Create an account
                     """);
-            Scanner input = new Scanner(System.in);
-            choice = input.nextInt();
+
+            while (keepGoing) {
+                try {
+                    Scanner input = new Scanner(System.in);
+                    choice = input.nextInt();
+                    keepGoing = false;
+                } catch (InputMismatchException e) {
+                    System.out.println("Sorry, but you need to enter a number!");
+                    System.out.print("Enter your choice: ");
+                }
+            }
             // Exit
             if (choice == 0) {
                 System.out.println("Thanks for using our app! =)");
@@ -78,7 +85,8 @@ public class Main {
                     System.out.println("Sorry, but in order to user this feature you need to create an account");
                 }
             } else if (choice == 2) {
-                Scanner input2 = new Scanner(System.in);
+                int choice2 = 0;
+                keepGoing = true;
                 System.out.println("""
                         Great! Now, choose one of the options!
                         1 - Create Hawker food stall
@@ -86,7 +94,16 @@ public class Main {
                         3 - Add menu to your Hawker food stall
                         4 - Delete menu from your Hawker food stall
                         """);
-                int choice2 = input2.nextInt();
+                while (keepGoing) {
+                    try {
+                        Scanner input2 = new Scanner(System.in);
+                        choice2 = input2.nextInt();
+                        keepGoing = false;
+                    } catch (InputMismatchException e) {
+                        System.out.println("Sorry, but you need to choose on of the options");
+                        System.out.print("Enter your option: ");
+                    }
+                }
                 if (choice2 == 1) {
                     h1.addNewHawkerFoodStall();
                 } else if (choice2 == 2) {
@@ -95,6 +112,8 @@ public class Main {
                     s1.addNewFoodMenu();
                 } else if (choice2 == 4) {
                     s1.deleteFoodFromMenu();
+                } else {
+                    System.out.println("There is no such option =(");
                 }
             }
             // Creating account
@@ -104,6 +123,6 @@ public class Main {
             } else {
                 System.out.println("You need to choose one of the options!");
             }
+            }
         }
     }
-}
